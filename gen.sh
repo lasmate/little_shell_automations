@@ -49,8 +49,7 @@ prog(){
     echo " "
     case $ans in
     1 ) 
-        read name
-        
+        read name   
         code $name.sh
         ;;
     2 ) 
@@ -77,8 +76,7 @@ prog(){
         quit
         ;;
     * ) 
-        echo "unknown option"
-        exit 1
+        unknown
         ;;
     esac 
 
@@ -139,10 +137,10 @@ main(){
         prog
         ;;
     3 ) 
-        chrome
+        chrome #todo
         ;;
     4 )
-        discord 
+        discord #todo
         ;;
     5 ) 
         ani_menu
@@ -151,8 +149,7 @@ main(){
         quit
         ;;
     * ) 
-        echo "unknown option"
-        exit 1
+        unknown
         ;;
     esac
 }
