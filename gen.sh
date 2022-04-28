@@ -1,15 +1,16 @@
+
 ### Colors ##
-    ESC=$(printf '\033') RESET="${ESC}[0m" BLACK="${ESC}[30m" RED="${ESC}[31m"
-    GREEN="${ESC}[32m" YELLOW="${ESC}[33m" BLUE="${ESC}[34m" MAGENTA="${ESC}[35m"
-    CYAN="${ESC}[36m" WHITE="${ESC}[37m" DEFAULT="${ESC}[39m"
+ESC=$(printf '\033') RESET="${ESC}[0m" BLACK="${ESC}[30m" RED="${ESC}[31m"
+GREEN="${ESC}[32m" YELLOW="${ESC}[33m" BLUE="${ESC}[34m" MAGENTA="${ESC}[35m"
+CYAN="${ESC}[36m" WHITE="${ESC}[37m" DEFAULT="${ESC}[39m"
 
 ### Color Functions ##
-    greenprint() { printf "${GREEN}%s${RESET}\n" "$1"; }
-    blueprint() { printf "${BLUE}%s${RESET}\n" "$1"; }
-    redprint() { printf "${RED}%s${RESET}\n" "$1"; }
-    yellowprint() { printf "${YELLOW}%s${RESET}\n" "$1"; }
-    magentaprint() { printf "${MAGENTA}%s${RESET}\n" "$1"; }
-    cyanprint() { printf "${CYAN}%s${RESET}\n" "$1"; }
+greenprint() { printf "${GREEN}%s${RESET}\n" "$1"; }
+blueprint() { printf "${BLUE}%s${RESET}\n" "$1"; }
+redprint() { printf "${RED}%s${RESET}\n" "$1"; }
+yellowprint() { printf "${YELLOW}%s${RESET}\n" "$1"; }
+magentaprint() { printf "${MAGENTA}%s${RESET}\n" "$1"; }
+cyanprint() { printf "${CYAN}%s${RESET}\n" "$1"; }
 
 ###MINI FUNCTIONS###
 home() {
@@ -20,7 +21,7 @@ home() {
 }
 quit(){ 
     echo "
-    bye..."
+    bye bye"
     cd
     exit 0
 }
@@ -35,30 +36,35 @@ unknown(){
 prog(){
     echo "
     ====================   
-    $(magentaprint '1) Shell script') 
-    $(redprint     '2) C/C++')
-    $(yellowprint  '3) Python')
+    $(magentaprint '1) Shell script')
+    $(magentaprint '2) Python')
+    $(redprint     '3) C/C++')
     $(cyanprint    '4) Java')
-    $(blueprint    '5) Javascript')
+    $(cyanprint    '5) Javascript')
     $(greenprint   '6) PHP')
+    $(greenprint   '7) SQL')
+    
     9) Go Back
     0) EXIT
     ====================
     Choose an option:  "
-    read -n 1 ans
+    read -e -n 1 ans
     echo " "
     case $ans in
     1 ) 
-        read name   
+        echo "directory/name of the script: "
+        read name
         code $name.sh
         ;;
     2 ) 
-        read name
-        code $name.c
-        ;;
-    3 ) 
+        echo "directory/name of the python file: "
         read name
         code $name.py
+        ;;
+    3 ) 
+        echo "directory/name of the c/c++ file: "
+        read name
+        code $name.c
         ;;
     4 )
         ./java.sh 
@@ -66,8 +72,14 @@ prog(){
     5 ) 
         ;;
     6 ) 
+        echo "directory/name of the PHP file: "
         read name
         code $name.php
+        ;;
+    7 ) 
+        echo "directory/name of the SQL file: "
+        read name
+        code $name.sql
         ;;
     9)
         home
@@ -76,7 +88,8 @@ prog(){
         quit
         ;;
     * ) 
-        unknown
+        echo "unknown option"
+        exit 1
         ;;
     esac 
 
@@ -137,10 +150,10 @@ main(){
         prog
         ;;
     3 ) 
-        chrome #todo
+        chrome
         ;;
     4 )
-        discord #todo
+        discord 
         ;;
     5 ) 
         ani_menu
@@ -149,7 +162,8 @@ main(){
         quit
         ;;
     * ) 
-        unknown
+        echo "unknown option"
+        exit 1
         ;;
     esac
 }
