@@ -85,6 +85,9 @@ prog(){ #small menu for ease of use of vscode
         ./java.sh 
         ;;
     5 ) 
+        echo "directory/name of the JS file: "
+        read name
+        code $name.js
         ;;
     6 ) 
         echo "directory/name of the PHP file: "
