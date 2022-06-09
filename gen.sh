@@ -29,8 +29,8 @@ unknown(){
     exit 1
     }
 
-###MAIN FUNCTION###
-prog(){
+###MAIN FUNCTIONS###
+prog(){ #menu to quickly start a new coding file based on the most comman languages 
     echo "
     ====================   
     $(magentaprint '1) Shell script')
@@ -61,7 +61,9 @@ prog(){
     4 )
         ./java.sh ;;
     5 ) 
-        ;;
+        echo "directory/name of the JS file: "
+        read name
+        code $name.js ;;
     6 ) 
         echo "directory/name of the PHP file: "
         read name
@@ -79,7 +81,6 @@ prog(){
         exit 1
         ;;
     esac 
-
 }
 ani_menu(){ #menu for ease of use and small additionnal function to ani-cli
     echo "
