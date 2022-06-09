@@ -103,8 +103,7 @@ ani_menu(){ #menu for ease of use and small additionnal function to ani-cli
         PS3="$(magentaprint 'Use numbers to select a file or 'q' to cancel:') " 
         select filename in *.mp4 # allow the user to choose a file
         do   
-            if [[ "$REPLY" == q ]]; then break; fi # leave the loop if the user says 'stop'
-
+            if [[ "$REPLY" == q ]]; then break; fi # leave the loop if the user prompt
             if [[ "$filename" == "" ]] # complain if no file was selected, and loop to ask again
             then
                 echo "'$REPLY' is not a valid number"
@@ -141,8 +140,7 @@ main(){
     echo " "
     case $ans in
     1 ) 
-        sudo apt-get update 
-        sudo apt upgrade ;;
+        sudo apt-get update && sudo apt upgrade ;;
     2 ) 
         prog ;;
     3 ) 
