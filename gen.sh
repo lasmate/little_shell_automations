@@ -152,6 +152,33 @@ manga_menu(){
         quit ;;
     * ) 
         unknown ;;
+    esac    
+}
+manga_menu(){
+    echo "
+    ====================
+    $(magentaprint '1) Watch Manga') 
+    $(redprint     '2) Back to W/leftoff')
+    $(yellowprint  '3) Update Script')
+    9) Go Back
+    0) EXIT
+    ====================
+    "
+    read -n 1 ans1
+    #cd ani-cli
+    case $ans1 in 
+    1 ) 
+        manga-cli;;
+    2 )
+        manga-cli -l;;
+    3 )
+        manga-cli -u;;
+    9) 
+        home ;;
+    0 ) 
+        quit ;;
+    * ) 
+        unknown ;;
     esac 
 }   
 back_menu(){
@@ -183,6 +210,7 @@ main(){
     $(redprint     '2) Prog')
     $(yellowprint  '3) Chrome')
     $(cyanprint    '4) Manga')
+    $(cyanprint    '4) Manga')
     $(blueprint    '5) Anime')
     0) EXIT 
     ===================="
@@ -196,6 +224,7 @@ main(){
     3 ) 
         chrome ;;
     4 )
+        manga_menu;;
         manga_menu;;
     5 ) 
         ani_menu ;;
