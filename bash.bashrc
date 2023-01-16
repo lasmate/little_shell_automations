@@ -13,32 +13,48 @@ PINK='\033[48;2;245;169;184m'
 WHIT='\033[48;2;255;255;255m'
 NC='\033[0m' # No Color
 
-for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
-printf "${BLUE_TEXT} _    ⟢            ⟣    __  ⟣    _    ⟡       ⟢        ⟣ _    ⟡${NC}\n"
-printf "${BLUE_TEXT}/⑊⑊            ⟢       /⑊ ⑊     /⑊⑊    ⟢   	⟢       /⑊⑊        ${NC}\n"
-printf "${BLUE_TEXT}⑊ ⑊⑊   ⟢  _  _     __ ⟣⑊ ⑊/ ___ ⑊ ⑊⑊___     __    ⟣  ___⑊ ⑊⑊__ ⟣ ${NC}\n"
-printf "${PINK_TEXT} ⑊ ⑊⑊  _ /⑊⑊/⑊⑊  / __ ⑊ ⑊/ / ,_⑊ ⑊ ⑊'__⑊  / __ ⑊    / ,_⑊⑊ ⑊ _ ⑊  ${NC}\n"
-printf "${WHIT_TEXT}  ⑊ ⑊⑊_⑊⑊⑊ ⑊⑊_⑊⑊/⑊ ⑊L⑊ ⑊  /⑊__, ⑊ ⑊ ⑊⑊L⑊⑊/⑊ ⑊L⑊ ⑊  /⑊__, ⑊⑊ ⑊⑊ ⑊⑊ ${NC}\n"
-printf "${PINK_TEXT}   ⑊ ⑊__/ ⑊ ⑊__⑊⑊ ⑊__/ ⑊_⑊⑊/⑊___/  ⑊ ⑊,_/⑊ ⑊__/ ⑊_⑊⑊/⑊___/ ⑊ ⑊⑊ ⑊⑊${NC}\n"
-printf "${BLUE_TEXT}    ⑊/_/   ⑊/_/>⑊⑊/__/⑊/_/ ⑊/__/  ⟢ ⑊/_/  ⑊/__/⑊/_/ ⑊/__/   ⑊//⑊//${NC}\n"
-printf "${BLUE_TEXT}          ⟣  /⑊__/           ⟢           ⟣         ⟡          ⟣ ${NC}\n"
-printf "${BLUE_TEXT}             ⑊/_/      ⟡           ⟣       ⟡               ⟢    ${NC}\n"
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
-for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+dp_smaller_than=66
+if [ $(tput cols) -lt $dp_smaller_than ]
+then
+  printf "${BLUE_TEXT}⟣   __             _       __              __ ⟢${NC}\n"
+  printf "${PINK_TEXT}⟣  / / __  ______ ( )____ / /_  ____  ____/ /_⟢ ${NC}\n"
+  printf             '⟣ / / / / / / __ `/// __// __ \/ __ `/ __/ __ \'
+  printf "\n"
+  printf             "⟣/ /_/ /_/ / /_/ / (_  )/ /_/ / /_/ (_  ) / / /\n"
+  printf "${PINK_TEXT}/____|__, /\__,_/ /___//_.___/\__,_/___/_/ /_/⟢${NC}\n"
+  printf "${BLUE_TEXT}⟣   /____/                                   ⟢${NC}\n"
+
+else
+  printf "${BLUE_TEXT} _    ⟢            ⟣    __  ⟣    _    ⟡       ⟢        ⟣ _    ⟡  ${NC}\n"
+  printf "${BLUE_TEXT}/⑊⑊            ⟢       /⑊ ⑊     /⑊⑊    ⟢        ⟢       /⑊⑊       ${NC}\n"
+  printf "${PINK_TEXT}⑊ ⑊⑊   ⟢  _  _     __ ⟣⑊ ⑊/ ___ ⑊ ⑊⑊___     __    ⟣  ___⑊ ⑊⑊__ ⟣ ${NC}\n"
+  printf "${PINK_TEXT} ⑊ ⑊⑊  _ /⑊⑊/⑊⑊  / __ ⑊ ⑊/ / ,_⑊ ⑊ ⑊'__⑊  / __ ⑊    / ,_⑊⑊ ⑊ _ ⑊  ${NC}\n"
+  printf "${WHIT_TEXT}  ⑊ ⑊⑊_⑊⑊⑊ ⑊⑊_⑊⑊/⑊ ⑊L⑊ ⑊  /⑊__, ⑊ ⑊ ⑊⑊L⑊⑊/⑊ ⑊L⑊ ⑊  /⑊__, ⑊⑊ ⑊⑊ ⑊⑊ ${NC}\n"
+  printf "${PINK_TEXT}   ⑊ ⑊__/ ⑊ ⑊__⑊⑊ ⑊__/ ⑊_⑊⑊/⑊___/  ⑊ ⑊,_/⑊ ⑊__/ ⑊_⑊⑊/⑊___/ ⑊ ⑊⑊ ⑊⑊${NC}\n"
+  printf "${PINK_TEXT}    ⑊/_/   ⑊/_/>⑊⑊/__/⑊/_/ ⑊/__/  ⟢ ⑊/_/  ⑊/__/⑊/_/ ⑊/__/   ⑊//⑊//${NC}\n"
+  printf "${BLUE_TEXT}          ⟣  /⑊__/           ⟢           ⟣         ⟡          ⟣ ${NC}\n"
+  printf "${BLUE_TEXT}             ⑊/_/      ⟡           ⟣       ⟡               ⟢    ${NC}\n"
+fi
+
+for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
 printf "${BLACK}${BLUE_TEXT}𝖇𝖊𝖓𝖊𝖆𝖙𝖍 𝖙𝖍𝖊      ${NC}\n"
 printf "${BLACK}${PINK_TEXT} 𝖙𝖍𝖊 𝖘𝖈𝖆𝖗𝖑𝖊𝖙 𝖒𝖔𝖔𝖓 ${NC}\n"
 printf "${BLACK}${WHIT_TEXT}   𝖙𝖍𝖊 𝖈𝖗𝖆𝖟𝖊𝖉    ${NC}\n"
 printf "${BLACK}${PINK_TEXT}     𝖇𝖑𝖔𝖘𝖘𝖔𝖒𝖘   ${NC}\n"
 printf "${BLACK}${BLUE_TEXT}      𝖘𝖊𝖛𝖊𝖗𝖆𝖓𝖈𝖊  ${NC}\n"
-for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
-echo -e "\e[95mHi i hope you're having a good day "
+for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+/home/lya/Documents/DK-cli/DK-cli.sh
+
+#echo -e "\e[95mHi i hope you're having a good day "
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
