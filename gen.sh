@@ -110,7 +110,7 @@ ani_menu(){ #menu for ease of use and small additionnal function to ani-cli
                 echo "'$REPLY' is not a valid number"
                 continue
             fi
-            xdg-open $filename # now we can use the selected file
+            xdg-open "$filename" # now we can use the selected file
             # it'll ask for another unless we leave the loop
             break
         done ;;
@@ -122,10 +122,59 @@ ani_menu(){ #menu for ease of use and small additionnal function to ani-cli
         home ;;
     0 ) 
         quit ;;
+        
     * ) 
         unknown ;;
     esac  
 }
+manga_menu(){
+    echo "
+    ====================
+    $(magentaprint '1) Watch Manga') 
+    $(redprint     '2) Back to W/leftoff')
+    $(yellowprint  '3) Update Script')
+    9) Go Back
+    0) EXIT
+    ====================
+    "
+    read -n 1 ans1
+    #cd ani-cli
+    case $ans1 in 
+    1 ) 
+        manga-cli;;
+    2 )
+        manga-cli -l;;
+    3 )
+        manga-cli -u;;
+    9) 
+        home ;;
+    0 ) 
+        quit ;;
+    * ) 
+        unknown ;;
+    esac 
+}   
+back_menu(){
+    echo "
+        ================
+        $(magentaprint 'v) -5%')
+        $(magentaprint 'b) +5%')
+        ================"
+    while true; do
+        read -N 1 ans1
+        case $ans1 in 
+        v ) 
+            sudo brightnessctl -q s 5%- ;;
+        b )
+            sudo brightnessctl -q s 5%+ ;;
+        q) 
+            quit ;;
+        * )
+            unknown ;;
+        esac
+    done
+}
+
 main(){
     echo "what do you want to do?"
     echo "
@@ -133,7 +182,7 @@ main(){
     $(magentaprint '1) Update && Upgrade') 
     $(redprint     '2) Prog')
     $(yellowprint  '3) Chrome')
-    $(cyanprint    '4) Discord')
+    $(cyanprint    '4) Manga')
     $(blueprint    '5) Anime')
     0) EXIT 
     ===================="
@@ -147,9 +196,11 @@ main(){
     3 ) 
         chrome ;;
     4 )
-        discord ;;
+        manga_menu;;
     5 ) 
         ani_menu ;;
+    b) 
+        back_menu ;;
     0 ) 
         quit ;;
     * ) 
