@@ -58,7 +58,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1="\[$(tput bold)\]\[\033[38;5;62m\]@\[$(tput sgr0)\]\[\033[38;5;61m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;195m\][\[$(tput sgr0)\]\[\033[38;5;111m\]\t\[$(tput sgr0)\]\[\033[38;5;195m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]{\[$(tput sgr0)\]\[\033[38;5;211m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]}\[$(tput sgr0)\] :\[$(tput sgr0)\]"
+    PS1="\[$(tput bold)\]\[\033[38;5;62m\]@\[$(tput sgr0)\]\[\033[38;5;61m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;195m\][\[$(tput sgr0)\]\[\033[38;5;111m\]\t\[$(tput sgr0)\]\[\033[38;5;195m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]{\[$(tput sgr0)\]\[\033[38;5;211m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]}\[$(tput sgr0)\]\n\[$(tput sgr0)\]"
 
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -89,6 +89,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias HYPER='hyper' 
     alias CODE='code' 
     alias VSCODE='code' 
+    alias VSC='code'
+    alias ani='ani-cli'
+    alias mag='manga-cli'
     alias GEN='./gen.sh --color=auto'
     alias gen='./gen.sh --color=auto'
 fi
@@ -100,6 +103,10 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ..='cd ..'
+alias cl='clear'
+alias bb='bash'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -124,3 +131,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+. "$HOME/.cargo/env"
