@@ -13,32 +13,38 @@ PINK='\033[48;2;245;169;184m'
 WHIT='\033[48;2;255;255;255m'
 NC='\033[0m' # No Color
 
-for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
-printf "${BLUE_TEXT} _    ⟢            ⟣    __  ⟣    _    ⟡       ⟢        ⟣ _    ⟡${NC}\n"
-printf "${BLUE_TEXT}/⑊⑊            ⟢       /⑊ ⑊     /⑊⑊    ⟢   	⟢       /⑊⑊        ${NC}\n"
-printf "${BLUE_TEXT}⑊ ⑊⑊   ⟢  _  _     __ ⟣⑊ ⑊/ ___ ⑊ ⑊⑊___     __    ⟣  ___⑊ ⑊⑊__ ⟣ ${NC}\n"
-printf "${PINK_TEXT} ⑊ ⑊⑊  _ /⑊⑊/⑊⑊  / __ ⑊ ⑊/ / ,_⑊ ⑊ ⑊'__⑊  / __ ⑊    / ,_⑊⑊ ⑊ _ ⑊  ${NC}\n"
-printf "${WHIT_TEXT}  ⑊ ⑊⑊_⑊⑊⑊ ⑊⑊_⑊⑊/⑊ ⑊L⑊ ⑊  /⑊__, ⑊ ⑊ ⑊⑊L⑊⑊/⑊ ⑊L⑊ ⑊  /⑊__, ⑊⑊ ⑊⑊ ⑊⑊ ${NC}\n"
-printf "${PINK_TEXT}   ⑊ ⑊__/ ⑊ ⑊__⑊⑊ ⑊__/ ⑊_⑊⑊/⑊___/  ⑊ ⑊,_/⑊ ⑊__/ ⑊_⑊⑊/⑊___/ ⑊ ⑊⑊ ⑊⑊${NC}\n"
-printf "${BLUE_TEXT}    ⑊/_/   ⑊/_/>⑊⑊/__/⑊/_/ ⑊/__/  ⟢ ⑊/_/  ⑊/__/⑊/_/ ⑊/__/   ⑊//⑊//${NC}\n"
-printf "${BLUE_TEXT}          ⟣  /⑊__/           ⟢           ⟣         ⟡          ⟣ ${NC}\n"
-printf "${BLUE_TEXT}             ⑊/_/      ⟡           ⟣       ⟡               ⟢    ${NC}\n"
-
-for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
-printf "${BLACK}${BLUE_TEXT}𝖇𝖊𝖓𝖊𝖆𝖙𝖍 𝖙𝖍𝖊      ${NC}\n"
-printf "${BLACK}${PINK_TEXT} 𝖙𝖍𝖊 𝖘𝖈𝖆𝖗𝖑𝖊𝖙 𝖒𝖔𝖔𝖓 ${NC}\n"
-printf "${BLACK}${WHIT_TEXT}   𝖙𝖍𝖊 𝖈𝖗𝖆𝖟𝖊𝖉    ${NC}\n"
-printf "${BLACK}${PINK_TEXT}     𝖇𝖑𝖔𝖘𝖘𝖔𝖒𝖘   ${NC}\n"
-printf "${BLACK}${BLUE_TEXT}      𝖘𝖊𝖛𝖊𝖗𝖆𝖓𝖈𝖊  ${NC}\n"
-for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
-echo -e "\e[95mHi i hope you're having a good day "
-
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+dp_bigger_than=48
+if [ $dp_bigger_than -lt $(tput cols) ]
+then
+for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+  printf "${BLUE_TEXT}⟣   __             _       __              __ ⟢${NC}\n"
+  printf "${PINK_TEXT}⟣  / / __  ______ ( )____ / /_  ____  ____/ /_⟢ ${NC}\n"
+  printf             '⟣ / / / / / / __ `/// __// __ \/ __ `/ __/ __ \'
+  printf "\n"
+  printf             "⟣/ /_/ /_/ / /_/ / (_  )/ /_/ / /_/ (_  ) / / /\n"
+  printf "${PINK_TEXT}/____|__, /\__,_/ /___//_.___/\__,_/___/_/ /_/⟢${NC}\n"
+  printf "${BLUE_TEXT}⟣   /____/                                   ⟢${NC}\n"
+for i in {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+else
+  for i in {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+  printf "${PUR_TEXT}it's a bit smol in here${NC}\n"
+  printf "${PUR_TEXT}but i'm still here 4 u ${NC}\n"
+  for i in {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+fi
+printf "${BLUE_TEXT}𝖇𝖊𝖓𝖊𝖆𝖙𝖍 𝖙𝖍𝖊      ${NC}\n"
+printf "${PINK_TEXT} 𝖙𝖍𝖊 𝖘𝖈𝖆𝖗𝖑𝖊𝖙 𝖒𝖔𝖔𝖓 ${NC}\n"
+printf "${WHIT_TEXT}   𝖙𝖍𝖊 𝖈𝖗𝖆𝖟𝖊𝖉    ${NC}\n"
+printf "${PINK_TEXT}     𝖇𝖑𝖔𝖘𝖘𝖔𝖒𝖘   ${NC}\n"
+printf "${BLUE_TEXT}      𝖘𝖊𝖛𝖊𝖗𝖆𝖓𝖈𝖊  ${NC}\n"
+for i in {16..21} {21..16} {16..21} {21..16} ; do echo -en "\e[38;5;${i}m#\e[0m" ; done ; echo
+/home/lya/Documents/DK-cli/DK-cli.sh 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -48,7 +54,7 @@ fi
 # set a fancy prompt (non-color, overwrite the one in /etc/profile)
 # but only if not SUDOing and have SUDO_PS1 set; then assume smart user.
 if ! [ -n "${SUDO_USER}" -a -n "${SUDO_PS1}" ]; then
-  PS1="\[$(tput bold)\]\[\033[38;5;62m\]@\[$(tput sgr0)\]\[\033[38;5;61m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;195m\][\[$(tput sgr0)\]\[\033[38;5;111m\]\t\[$(tput sgr0)\]\[\033[38;5;195m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]{\[$(tput sgr0)\]\[\033[38;5;211m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]}\[$(tput sgr0)\] :\[$(tput sgr0)\]"
+  PS1="\[$(tput bold)\]\[\033[38;5;62m\]@\[$(tput sgr0)\]\[\033[38;5;61m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;195m\][\[$(tput sgr0)\]\[\033[38;5;111m\]\t\[$(tput sgr0)\]\[\033[38;5;195m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]{\[$(tput sgr0)\]\[\033[38;5;211m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;216m\]}\[$(tput sgr0)\]\r\[$(tput sgr0)\]"
 fi
 
 # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.

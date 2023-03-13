@@ -30,7 +30,7 @@ unknown(){
     }
 
 ###MAIN FUNCTIONS###
-prog(){ #menu to quickly start a new coding file based on the most comman languages 
+prog(){ #menu to quickly start a new project
     echo "
     ====================   
     $(magentaprint '1) Shell script')
@@ -58,20 +58,10 @@ prog(){ #menu to quickly start a new coding file based on the most comman langua
         echo "directory/name of the c/c++ file: "
         read name
         code $name.c ;;
-    4 )
-        ./java.sh ;;
-    5 ) 
-        echo "directory/name of the JS file: "
+    4 ) 
+        echo "directory/name of the rust file: "
         read name
-        code $name.js ;;
-    6 ) 
-        echo "directory/name of the PHP file: "
-        read name
-        code $name.php ;;
-    7 ) 
-        echo "directory/name of the SQL file: "
-        read name
-        code $name.sql ;;
+        code $name.rs ;;
     9)
         home ;;
     0 ) 
@@ -152,33 +142,6 @@ manga_menu(){
         quit ;;
     * ) 
         unknown ;;
-    esac    
-}
-manga_menu(){
-    echo "
-    ====================
-    $(magentaprint '1) Watch Manga') 
-    $(redprint     '2) Back to W/leftoff')
-    $(yellowprint  '3) Update Script')
-    9) Go Back
-    0) EXIT
-    ====================
-    "
-    read -n 1 ans1
-    #cd ani-cli
-    case $ans1 in 
-    1 ) 
-        manga-cli;;
-    2 )
-        manga-cli -l;;
-    3 )
-        manga-cli -u;;
-    9) 
-        home ;;
-    0 ) 
-        quit ;;
-    * ) 
-        unknown ;;
     esac 
 }   
 back_menu(){
@@ -201,40 +164,123 @@ back_menu(){
         esac
     done
 }
-
+net_menu(){
+    nmcli r
+    nmcli d
+    echo "
+    ====================
+    $(magentaprint '1) toggle wifi') 
+    $(redprint     '2) toggle bluetooth')
+    $(yellowprint  '3) toggle airplane mode')
+    9) Go Back
+    0) EXIT
+    ====================
+    "
+    read -n 1 ans1
+    echo " "
+    case $ans1 in
+    1 ) 
+        echo "toggling wifi"
+        status=$(nmcli r wifi)
+        if [ $status == "enabled" ]; then
+            nmcli r wifi off
+        else
+            nmcli r wifi on
+        fi ;;   
+    2 )
+        echo "toggling bluetooth"
+        bluetooth toogle ;;
+    
+    3 ) 
+        echo "turning on airplane mode"
+        nmcli radio wifi off
+        bluetooth off ;;
+    9)
+        home ;;
+    0 )
+        quit ;;
+    * )
+        unknown ;;
+    esac
+}
+read_menu(){
+    echo "
+    ====================
+    $(magentaprint '1) Read Manga') 
+    $(magentaprint '2) Read Ao3 fanfics')
+    9) Go Back
+    0) EXIT
+    ====================
+    "
+    read -n 1 ans1
+    #cd ani-cli
+    case $ans1 in 
+    1 ) 
+        manga-cli;;
+    2 )
+        cd Documents/Ao3-S-cli/
+        ./Ao3-S-cli.sh ;;
+    9) 
+        home ;;
+    0 ) 
+        quit ;;
+    * ) 
+        unknown ;;
+    esac 
+}
+watch_menu(){
+    echo "
+    ====================
+    $(magentaprint '1) Watch Anime') 
+    
+    9) Go Back
+    0) EXIT
+    ====================
+    "
+    read -n 1 ans1
+    echo " "
+    case $ans1 in
+    1 ) 
+        ani_menu ;;
+    9)
+        home ;;
+    0 )
+        quit ;;
+    * )
+        unknown ;;
+    esac
+}
 main(){
     echo "what do you want to do?"
     echo "
     ====================
     $(magentaprint '1) Update && Upgrade') 
     $(redprint     '2) Prog')
-    $(yellowprint  '3) Chrome')
-    $(cyanprint    '4) Manga')
-    $(cyanprint    '4) Manga')
-    $(blueprint    '5) Anime')
+    $(yellowprint  '3) net_menu')
+    $(cyanprint    '4) Reading')
+    $(blueprint    '5) Watching')
     0) EXIT 
     ===================="
     read -n 1 ans
     echo " "
     case $ans in
     1 ) 
-        sudo apt-get update && sudo apt upgrade ;;
+        sudo apt-get update && sudo apt upgrade 
+        rustup update ;;
     2 ) 
         prog ;;
     3 ) 
-        chrome ;;
+        net_menu ;;
     4 )
-        manga_menu;;
-        manga_menu;;
+        read_menu;;
     5 ) 
-        ani_menu ;;
+        watch_menu ;;
     b) 
         back_menu ;;
     0 ) 
         quit ;;
     * ) 
-        echo "unknown option"
-        exit 1 ;;
+        unknown ;;
     esac
 }
 main
